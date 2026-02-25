@@ -1,0 +1,19 @@
+<section class="product-list-section">
+  <div class="container">
+    @if (displayedProducts().length > 0) {
+      <div class="product-grid">
+        @for (product of displayedProducts(); track product.id) {
+          <app-product-item
+            [product]="product"
+            (remove)="onRemoveProduct($event)"
+          ></app-product-item>
+        }
+      </div>
+    } @else {
+      <div class="empty-message">
+        <h2>Нет товаров</h2>
+        <p>В этой категории больше нет товаров</p>
+      </div>
+    }
+  </div>
+</section>

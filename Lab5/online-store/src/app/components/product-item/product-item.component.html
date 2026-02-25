@@ -1,0 +1,79 @@
+<div class="product-card">
+  <div class="gallery">
+    <div class="main-image-container">
+      @if (product().images.length > 1) {
+        <button class="nav-btn prev" (click)="prevImage()">&lt;</button>
+      }
+      <a [href]="product().link" target="_blank" rel="noopener noreferrer">
+        <img
+          [src]="product().images[selectedImageIndex]"
+          [alt]="product().name"
+          class="main-image"
+        />
+      </a>
+      @if (product().images.length > 1) {
+        <button class="nav-btn next" (click)="nextImage()">&gt;</button>
+      }
+    </div>
+    @if (product().images.length > 1) {
+      <div class="thumbnails">
+        @for (img of product().images; track $index) {
+          <img
+            [src]="img"
+            [alt]="product().name + ' image ' + ($index + 1)"
+            [class.active]="$index === selectedImageIndex"
+            class="thumbnail"
+            (click)="selectImage($index)"
+          />
+        }
+      </div>
+    }
+  </div>
+
+  <div class="product-info">
+    <a [href]="product().link" target="_blank" rel="noopener noreferrer" class="product-name-link">
+      <h3 class="product-name">{{ product().name }}</h3>
+    </a>
+
+    <div class="rating">
+      @for (star of stars; track star) {
+        <span [class]="getStarClass(star)">&#9733;</span>
+      }
+      <span class="rating-value">{{ product().rating }}</span>
+    </div>
+
+    <p class="description">{{ product().description }}</p>
+
+    <div class="price">{{ formatPrice(product().price) }} &#8376;</div>
+
+    <div class="actions">
+      <a [href]="product().link" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        Купить на Kaspi.kz
+      </a>
+
+      <button class="btn btn-like" (click)="onLike()">
+        &#10084; {{ product().likes }}
+      </button>
+
+      <div class="share-container">
+        <button class="btn btn-share" (click)="toggleShareMenu()">
+          Поделиться
+        </button>
+        @if (showShareMenu) {
+          <div class="share-menu">
+            <button class="share-option whatsapp" (click)="shareWhatsApp()">
+              <span class="share-icon">W</span> WhatsApp
+            </button>
+            <button class="share-option telegram" (click)="shareTelegram()">
+              <span class="share-icon">T</span> Telegram
+            </button>
+          </div>
+        }
+      </div>
+
+      <button class="btn btn-delete" (click)="onDelete()">
+        &#128465; Удалить
+      </button>
+    </div>
+  </div>
+</div>

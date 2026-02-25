@@ -1,0 +1,45 @@
+<header class="app-header">
+  <div class="header-container">
+    <div class="logo">
+      <span class="logo-icon">K</span>
+      <span class="logo-text">Online Store</span>
+    </div>
+    <nav class="nav-links">
+      @for (category of categories; track category.id) {
+        <button
+          class="nav-category"
+          [class.active]="selectedCategory?.id === category.id"
+          (click)="selectCategory(category)"
+        >
+          {{ category.name }}
+        </button>
+      }
+    </nav>
+  </div>
+</header>
+
+<main>
+  @if (selectedCategory) {
+    <div class="category-header">
+      <h1 class="page-title">{{ selectedCategory.name }}</h1>
+      <p class="page-subtitle">Товары с Kaspi.kz</p>
+    </div>
+    <app-product-list [products]="filteredProducts"></app-product-list>
+  } @else {
+    <div class="welcome">
+      <h1>Добро пожаловать в Online Store</h1>
+      <p>Выберите категорию, чтобы начать покупки</p>
+      <div class="category-cards">
+        @for (category of categories; track category.id) {
+          <button class="category-card" (click)="selectCategory(category)">
+            {{ category.name }}
+          </button>
+        }
+      </div>
+    </div>
+  }
+</main>
+
+<footer class="app-footer">
+  <p>Online Store &copy; 2025 &mdash; Товары с <a href="https://kaspi.kz" target="_blank" rel="noopener noreferrer">Kaspi.kz</a></p>
+</footer>
