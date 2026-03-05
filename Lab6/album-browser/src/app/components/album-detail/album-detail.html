@@ -1,0 +1,49 @@
+<div class="album-detail">
+  @if (loading()) {
+    <div class="loading">Loading album...</div>
+  }
+
+  @if (!loading() && !album()) {
+    <div class="empty">Album not found.</div>
+  }
+
+  @if (album(); as a) {
+    <h1>Album Details</h1>
+
+    <div class="detail-card">
+      <div class="detail-row">
+        <span class="label">ID:</span>
+        <span>{{ a.id }}</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">User ID:</span>
+        <span>{{ a.userId }}</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Title:</span>
+        <span>{{ a.title }}</span>
+      </div>
+
+      <div class="edit-section">
+        <label for="titleInput">Edit Title:</label>
+        <input
+          id="titleInput"
+          type="text"
+          [(ngModel)]="editTitle"
+          class="title-input"
+        />
+        <button class="btn-save" (click)="saveTitle()" [disabled]="saving()">
+          {{ saving() ? 'Saving...' : 'Save' }}
+        </button>
+        @if (saved()) {
+          <span class="saved-msg">Saved!</span>
+        }
+      </div>
+    </div>
+
+    <div class="actions">
+      <a [routerLink]="['/albums', a.id, 'photos']" class="btn-photos">View Photos</a>
+      <a routerLink="/albums" class="btn-back">Back to Albums</a>
+    </div>
+  }
+</div>
