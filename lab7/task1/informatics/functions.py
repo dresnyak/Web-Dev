@@ -1,7 +1,3 @@
-# Informatics.msk.ru — Functions (Problems A–C)
-
-
-# Problem A: Function to check if a number is prime
 def is_prime(n):
     if n < 2:
         return False
@@ -15,7 +11,6 @@ num = int(input())
 print("YES" if is_prime(num) else "NO")
 
 
-# Problem B: Function to compute power
 def power(base, exp):
     result = 1
     for _ in range(exp):
@@ -28,7 +23,6 @@ b = int(input())
 print(power(a, b))
 
 
-# Problem C: Function to find GCD
 def gcd(a, b):
     while b:
         a, b = b, a % b

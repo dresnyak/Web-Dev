@@ -1,5 +1,4 @@
 class Animal:
-    """Base class representing an animal."""
 
     def __init__(self, name, age, species):
         self.name = name
@@ -20,7 +19,6 @@ class Animal:
 
 
 class Dog(Animal):
-    """Dog class inheriting from Animal."""
 
     def __init__(self, name, age, breed):
         super().__init__(name, age, species="Dog")
@@ -37,7 +35,6 @@ class Dog(Animal):
 
 
 class Cat(Animal):
-    """Cat class inheriting from Animal."""
 
     def __init__(self, name, age, color):
         super().__init__(name, age, species="Cat")
@@ -54,7 +51,6 @@ class Cat(Animal):
 
 
 class Parrot(Animal):
-    """Parrot class inheriting from Animal."""
 
     def __init__(self, name, age, vocabulary_size):
         super().__init__(name, age, species="Parrot")

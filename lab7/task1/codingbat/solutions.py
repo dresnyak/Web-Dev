@@ -1,7 +1,3 @@
-# CodingBat Python Solutions
-
-#  Warmup-1 
-
 def sleep_in(weekday, vacation):
     return not weekday or vacation
 
@@ -50,8 +46,6 @@ def front3(str):
     return front * 3
 
 
-#  Warmup-2 
-
 def string_times(str, n):
     return str * n
 
@@ -98,8 +92,6 @@ def string_match(a, b):
     return count
 
 
-#  String-1 
-
 def hello_name(name):
     return "Hello " + name + "!"
 
@@ -136,8 +128,6 @@ def left2(str):
     return str[2:] + str[:2]
 
 
-#  String-2 
-
 def double_char(str):
     return "".join(c * 2 for c in str)
 
@@ -165,8 +155,6 @@ def xyz_there(str):
             return True
     return False
 
-
-#  List-1 
 
 def first_last6(nums):
     return nums[0] == 6 or nums[-1] == 6
@@ -205,8 +193,6 @@ def make_ends(nums):
 def has23(nums):
     return 2 in nums or 3 in nums
 
-
-#  List-2 
 
 def count_evens(nums):
     return sum(1 for n in nums if n % 2 == 0)
